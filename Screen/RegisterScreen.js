@@ -7,12 +7,11 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
-  CheckBox,
 } from "react-native";
+import CheckBox from "@react-native-community/checkbox"; // Corrected import
 
 const RegisterScreen = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const toggleCheckbox = () => setIsChecked(!isChecked);
 
   return (
     <ScrollView style={styles.container}>
@@ -58,14 +57,18 @@ const RegisterScreen = () => {
           secureTextEntry={true}
         />
 
-        {/* Checkbox */}
+        {/* Checkbox
         <View style={styles.checkboxContainer}>
-          <CheckBox value={isChecked} onValueChange={toggleCheckbox} />
+          <CheckBox
+            value={isChecked}
+            onValueChange={setIsChecked}
+            tintColors={{ true: "#064e3b", false: "#ccc" }} // Customize colors
+          />
           <Text style={styles.checkboxText}>
             I agree with <Text style={styles.link}>Terms and Policies</Text> of
             Cellula.
           </Text>
-        </View>
+        </View> */}
 
         {/* Register Button */}
         <TouchableOpacity style={styles.registerButton}>
