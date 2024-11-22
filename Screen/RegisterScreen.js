@@ -8,10 +8,12 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-import CheckBox from "@react-native-community/checkbox"; // Corrected import
 
-const RegisterScreen = () => {
-  const [isChecked, setIsChecked] = useState(false);
+const RegisterScreen = ({ navigation }) => {
+  const handleRegister = () => {
+    // Navigate to the OTP screen
+    navigation.navigate("Otp");
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -57,21 +59,11 @@ const RegisterScreen = () => {
           secureTextEntry={true}
         />
 
-        {/* Checkbox
-        <View style={styles.checkboxContainer}>
-          <CheckBox
-            value={isChecked}
-            onValueChange={setIsChecked}
-            tintColors={{ true: "#064e3b", false: "#ccc" }} // Customize colors
-          />
-          <Text style={styles.checkboxText}>
-            I agree with <Text style={styles.link}>Terms and Policies</Text> of
-            Cellula.
-          </Text>
-        </View> */}
-
         {/* Register Button */}
-        <TouchableOpacity style={styles.registerButton}>
+        <TouchableOpacity
+          style={styles.registerButton}
+          onPress={handleRegister}
+        >
           <Text style={styles.registerButtonText}>Register</Text>
         </TouchableOpacity>
       </View>
@@ -126,20 +118,6 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 15,
     fontSize: 16,
-  },
-  checkboxContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  checkboxText: {
-    marginLeft: 10,
-    fontSize: 14,
-    color: "#555",
-  },
-  link: {
-    color: "#064e3b",
-    fontWeight: "bold",
   },
   registerButton: {
     backgroundColor: "#064e3b",
